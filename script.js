@@ -39,9 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       window.addEventListener('touchstart', (e) => {
         this.touchY = e.changedTouches[0].pageY;
-        if (gameOver) {
-          restartGame();
-        }
       });
       window.addEventListener('touchmove', (e) => {
         const swipeDistance = e.changedTouches[0].pageY - this.touchY;
@@ -55,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
           this.keys.indexOf('swipe down') === -1
         ) {
           this.keys.push('swipe down');
+          if (gameOver) {
+            restartGame();
+          }
         }
       });
       window.addEventListener('touchend', (e) => {
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
       context.font = '40px Helvetica';
       context.fillText(`GAME OVER,`, canvas.width / 2, canvas.height / 2);
       context.fillText(
-        `press Enter or touch screen to restart!`,
+        `press Enter or swipe down to restart!`,
         canvas.width / 2,
         canvas.height / 2 + 30
       );
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.height / 2 + 2
       );
       context.fillText(
-        `press Enter or touch screen to restart!`,
+        `press Enter or swipe down to restart!`,
         canvas.width / 2 + 2,
         canvas.height / 2 + 32
       );
