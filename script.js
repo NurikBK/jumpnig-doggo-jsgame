@@ -231,6 +231,9 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
     update(deltaTime) {
+      if (score === 10 || score === 20) {
+        this.speed += 5;
+      }
       if (this.frameTimer > this.frameInterval) {
         if (this.frameX >= this.maxFrames) {
           this.frameX = 0;
